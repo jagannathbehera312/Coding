@@ -1,0 +1,18 @@
+int Palindrome(char S[],int i,int j){
+    
+    if(i>j){
+        return 1;
+    }
+    
+    if(S[i]!=S[j]){
+        return 0;
+    }
+    
+    Palindrome(S,i+1,j-1);
+}
+
+int isPalindrome(char S[])
+{
+    int n = strlen(S);
+    return Palindrome(S,0,n-1);
+}
