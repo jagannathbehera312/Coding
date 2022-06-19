@@ -1,0 +1,50 @@
+ bool checkCycle(int i,unordered_map<int,bool> &visited,unordered_map<int,bool> &dfsVisited,
+    vector<int> adj[]){
+        
+        
+        visited[i] =true;
+        dfsVisited[i]=true;
+        
+        for(auto j : adj[i]){
+            
+            if(!visited[j]){
+                bool cycle = checkCycle(j,visited,dfsVisited,adj);
+                
+                if(cycle){
+                    return true;
+                }
+            }
+            
+            else if(dfsVisited[j]){
+                
+                return true;
+                
+            }
+        }
+        
+        dfsVisited[i]=false;
+        return false;
+        
+    }
+    
+    
+    
+    bool isCyclic(int V, vector<int> adj[]) {
+       
+       unordered_map<int,bool> visited;
+       unordered_map<int,bool> dfsVisited;
+       
+       for(int i=0;i<V;i++){
+           
+           if(!visited[i]){
+               
+               bool cycle= checkCycle(i,visited,dfsVisited,adj);
+               
+               if(cycle){
+                   return true;
+               }
+           }
+       }
+       
+       return false;
+    }
