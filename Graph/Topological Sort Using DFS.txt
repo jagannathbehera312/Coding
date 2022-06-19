@@ -1,0 +1,42 @@
+	void toposort(int i,vector<bool> &visited,stack<int> &s,vector<int> adj[]){
+	    
+	    visited[i]=1;
+	    
+	    for(auto j : adj[i]){
+	        
+	        if(!visited[j]){
+	            
+	            toposort(j,visited,s,adj);
+	            
+	        }
+	    }
+	    
+	    
+	    s.push(i);
+	    return;
+	    
+	}
+	
+	
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	   vector<int> ans;
+	   stack<int> s;
+	   vector<bool> visited(V);
+	   
+	   for(int i=0;i<V;i++){
+	       
+	       if(!visited[i]){
+	           
+	           toposort(i,visited,s,adj);
+	       }
+	   }
+	   
+	   while(!s.empty()){
+	       
+	       ans.push_back(s.top());
+	       s.pop();
+	   }
+	   
+	   return ans;
+	}
