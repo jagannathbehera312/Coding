@@ -1,0 +1,22 @@
+int inorder(Node* root,int &ans){
+    
+    if(root== NULL){
+        return 0;
+    }
+    
+    int left = inorder(root->left,ans);
+    int right = inorder(root->right,ans);
+    
+    if(left == 0 && right ==0){
+        ans = ans+1;
+    }
+    
+    return max(left,right)+1;
+}
+int countLeaves(Node* root)
+{
+  int ans =0;
+  
+  inorder(root,ans);
+  return ans;
+}

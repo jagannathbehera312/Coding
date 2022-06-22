@@ -1,0 +1,20 @@
+int  maxsum(Node* root, int &ans){
+        
+        if(root == NULL){
+            return 0;
+        }
+        
+        int left = max(0,maxsum(root->left,ans));
+        int right = max(0,maxsum(root->right,ans));
+        
+         ans = max(ans,root->data+left+right);
+        
+        return root->data + max(left,right);
+    }
+    int findMaxSum(Node* root)
+    {
+        int ans=INT_MIN;
+        maxsum(root,ans);
+        
+        return ans;
+    }
