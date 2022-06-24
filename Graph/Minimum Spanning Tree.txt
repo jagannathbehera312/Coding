@@ -1,0 +1,49 @@
+int spanningTree(int V, vector<vector<int>> adj[])
+    {
+        int parent[V];
+        int key[V];
+        bool mst[V];
+        
+        for(int i=0;i<V;i++){
+            
+            parent[i]=-1;
+            key[i] = INT_MAX;
+            mst[i] =false;
+        }
+        
+        key[0]=0;
+        parent[0]=-1;
+        
+        for(int count=0;count<V;count++){
+            
+            int mini = INT_MAX,u;
+            
+            for(int v=0;v<V;v++){
+                if(mst[v]==false && key[v] <mini){
+                    mini = key[v];
+                    u=v;
+                }
+            }
+            
+            mst[u] = true;
+            
+            for(auto it: adj[u]){
+                int v =it[0];
+                int weight = it[1];
+                if(mst[v] == false && weight <key[v]){
+                    parent[v]=u;
+                    key[v] = weight;
+                }
+            }
+            
+        }
+        
+        int ans=0;
+            
+            for(int i=0;i<V;i++){
+                
+                ans = ans + key[i];
+            }
+            
+            return ans;
+    }

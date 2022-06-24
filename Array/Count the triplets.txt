@@ -1,0 +1,50 @@
+int countTriplet(int arr[], int n)
+	{
+	    int index[100000]={0};
+	    int count=0;
+	    
+	    for(int i=0;i<n;i++){
+	        index[arr[i]]=1;
+	    }
+	    
+	    
+	    for(int i=0;i<n-1;i++){
+	        
+	        for(int j=i+1;j<n;j++){
+	            
+	            if(index[arr[i]+arr[j]]==1){
+	                count++;
+	            }
+	        }
+	    }
+	    
+	    return count;
+	}
+
+
+USING UNORDERED MAP
+
+
+
+int countTriplet(int arr[], int n)
+	{
+	    unordered_map<int,int> map;
+	    int count=0;
+	    
+	    for(int i=0;i<n;i++){
+	        map[arr[i]]++;
+	    }
+	    
+	    
+	    for(int i=0;i<n-1;i++){
+	        
+	        for(int j=i+1;j<n;j++){
+	            
+	            if(map.find(arr[i]+arr[j]) != map.end()){
+	                count++;
+	            }
+	        }
+	    }
+	    
+	    return count;
+	}
