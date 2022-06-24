@@ -1,0 +1,24 @@
+int equilibriumPoint(long long a[], int n) {
+    
+        int lsum=0;
+        int rsum =0;
+        int pos=-1;
+       for(int i=0;i<n;i++){
+           
+           lsum = lsum+ a[i];
+       }
+       
+       for(int i=0;i<n;i++){
+           
+           lsum = lsum - a[i];
+           
+           if(lsum == rsum){
+               pos =i+1;
+               break;
+           }
+           
+           rsum = rsum+a[i];
+       }
+       
+       return pos;
+    }

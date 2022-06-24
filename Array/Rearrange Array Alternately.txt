@@ -1,0 +1,24 @@
+ void rearrange(long long *arr, int n) 
+    { 
+    	
+    	long int min =0;
+    	long int max =n-1;
+    	long int M = arr[n-1] +1;
+    	
+    	for(int i=0;i<n;i++){
+    	    
+    	    if(i%2==0){
+    	        arr[i] = arr[i]+ ((arr[max]% M)* M);
+    	        max--;
+    	    }
+    	    else{
+    	        arr[i] = arr[i]+((arr[min]%M)*M);
+    	        min++;
+    	    }
+    	}
+    	
+    	for(int i=0;i<n;i++){
+    	    arr[i] = arr[i]/M;
+    	}
+    	 
+    }
