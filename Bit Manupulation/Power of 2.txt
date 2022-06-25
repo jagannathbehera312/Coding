@@ -1,0 +1,12 @@
+bool isPowerofTwo(long long n){
+        
+        if(n==0)
+       return false;
+       //turnoff the last bit
+       n= (n&(n-1));
+       if(n!=0)
+       return false;
+       else
+       return true;    
+        
+    }
