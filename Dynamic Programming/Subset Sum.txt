@@ -1,0 +1,26 @@
+class Solution{   
+public:
+    int calc(vector < int > a, int n, int ind, int target, int dp[][1000]) {
+   if (ind == n) {
+      if (target == 0)
+         return true;
+      return false;
+   }
+   if (dp[ind][target] != -1)
+      return dp[ind][target];
+   bool take = false;
+   if (a[ind] <= target)
+      take = calc(a, n, ind + 1, target - a[ind], dp);
+   bool not_take;
+   not_take = calc(a, n, ind + 1, target, dp);
+   dp[ind][target] = (take || not_take);
+   return dp[ind][target];
+}
+bool isSubsetSum(vector < int > a, int target) {
+   int n, i;
+   n = a.size();
+   int dp[102][1000];
+   memset(dp, -1, sizeof(dp));
+   return calc(a, n, 0, target, dp);
+}
+};
