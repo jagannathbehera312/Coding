@@ -1,0 +1,47 @@
+int tabulation(int x,int y , string s1, string s2){
+        
+        int arr[x+1][y+1];
+        
+        
+        for(int i=0;i<x+1;i++){
+            
+            for(int j=0;j<y+1;j++){
+                
+                if(j==0 || i==0){
+                    arr[i][j]=0;
+                }
+            }
+        }
+        
+        
+        for(int i=1;i<x+1;i++){
+            
+            for(int j=1;j<y+1;j++){
+                
+                if(s1[i-1]==s2[j-1]){
+                    arr[i][j] = 1+ arr[i-1][j-1];
+                }
+                
+                else{
+                    arr[i][j] = max(arr[i-1][j],arr[i][j-1]);
+                }
+            }
+        }
+        
+        return arr[x][y];
+        
+    }
+    
+    
+int minDeletions(string str, int n) { 
+    
+    string B = str;
+    reverse(B.begin(),B.end());
+    int x = str.length();
+	    int y = B.length();
+	    
+	    int z = tabulation(x,y,str,B);
+	    
+	    return (y-z);
+   
+} 
